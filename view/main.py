@@ -10,7 +10,9 @@ __version__ = '0.1'
 
 class exemploCrud(App):
     def build(self):
+        kivy.config.Config.set('graphics', 'resizable', False)
         self.root = GerenciaTelas()
+        self.root.size = 480, 240
         return self.root
 
 
