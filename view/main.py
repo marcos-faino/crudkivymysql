@@ -1,6 +1,7 @@
 import kivy
 from kivy.app import App
 from view.gerencTelas import GerenciaTelas
+from view.telaTurma import ViewTurma
 
 kivy.require('2.1.0')
 

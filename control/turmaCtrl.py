@@ -39,6 +39,7 @@ class TurmaCtrl:
         else:
             res = dao.buscarTurmas(inicio=inicio, quant=quant)
         itens = []
+
         if type(res) is Turma:
             minhaturma = []
             minhaturma.append(self._criarLabel(res.id, 0.2))

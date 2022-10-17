@@ -30,31 +30,31 @@ class ViewTurma:
 
     def _limparTelaListar(self, tela):
         cabecalho = [
-            tela.ids.colId,
-            tela.ids.colNome,
-            tela.ids.colTurno,
-            tela.ids.lblAtual,
-            tela.ids.lblExcluir
+            tela.colid,
+            tela.colnome,
+            tela.colturno,
+            tela.colatual,
+            tela.colexcluir
         ]
-        tela.ids.listaTurmas.clear_widgets()
+        tela.gridlistar.clear_widgets()
         for c in cabecalho:
-            tela.ids.listaTurmas.add_widget(c)
+            tela.gridlistar.add_widget(c)
 
     def buscaTurmas(self):
         control = TurmaCtrl()
         tela = self._gerencTela.get_screen("ListarTurmas")
-        idPesq = tela.ids.inputId.text
+        idPesq = tela.inputid.text
         resultado = control.buscarTurma(id=idPesq)
         self._limparTelaListar(tela)
         for res in resultado:
             for r in res:
                 if r.text == "Atualizar" or r.text == "Excluir":
                     r.bind(on_release=self.montarTelaAt)
-                    tela.ids.listaTurmas.add_widget(r)
+                tela.gridlistar.add_widget(r)
 
     def montarTelaAt(self, botao):
         turma = []
-        if botao.id:
+        if hasattr(botao, 'id'):
             id = str(botao.id).replace("bt", "")
             control = TurmaCtrl()
             turma = control.buscarTurma(id=id)
@@ -64,9 +64,9 @@ class ViewTurma:
             telaCad.ids.inputNome.text = t[1].text
             if t[2] != "":
                 self._marcarTurno(t[2].text, telaCad)
-            telaCad.ids.btCadAtual.text = botao.text
-            self._limparTelaListar(self._gerencTela.get_screen("ListarTurmas"))
-            self._gerencTela.telaCadastroTurma()
+        telaCad.ids.btCadAtual.text = botao.text
+        self._limparTelaListar(self._gerencTela.get_screen("ListarTurmas"))
+        self._gerencTela.telaCadastroTurma()
 
     def _limparTela(self, tela):
         tela.ids.lblId.text = ""

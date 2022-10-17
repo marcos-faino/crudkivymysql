@@ -90,15 +90,12 @@ class TurmaDAO:
         turmas = []
         try:
             sql = "SELECT id,nome,turno FROM turma"
-            # sql += " LIMIT " + str(inicio)
-            # sql += "," + str(quant)+";"
             cursor = self._con.cursor()
             cursor.execute(sql)
             res = cursor.fetchmany(quant)
             turmas = self._montarResultado(res)
             return turmas
         except Exception as e:
-            print(e)
             return turmas
 
     def _montarResultado(self, res):
@@ -107,4 +104,4 @@ class TurmaDAO:
         for linha in res:
             turma = Turma(linha[0], linha[1], linha[2])
             turmas.append(turma)
-            return turmas
+        return turmas

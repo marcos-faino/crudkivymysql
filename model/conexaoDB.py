@@ -6,7 +6,7 @@ class Conexaodb:
     _host = 'localhost'
     _user = 'root'
     _password = ''
-    _bd = 'crudescola2022'
+    _db = 'crudescola2022'
 
     @staticmethod
     def conectar():
@@ -20,17 +20,17 @@ class Conexaodb:
                 )
                 return Conexaodb._conn
             except Exception as erro:
-                print(erro)
                 return None
-            return Conexaodb._conn
+        return Conexaodb._conn
 
-        @staticmethod
-        def executarSql(sql, dados=''):
-            try:
-                cursor = Conexaodb._conn.cursor(prepared=True)
-                cursor.execute(sql,dados)
-                Conexaodb._conn.commit()
-                return cursor.rowcount
-            except Exception as e:
-                return e
+    @staticmethod
+    def executarSql(sql, dados=''):
+        Conexaodb.conectar()
+        try:
+            cursor = Conexaodb._conn.cursor(prepared=True)
+            cursor.execute(sql,dados)
+            Conexaodb._conn.commit()
+            return cursor.rowcount
+        except Exception as e:
+            return e
 
