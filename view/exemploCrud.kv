@@ -34,10 +34,16 @@
             Button:
                 on_release: app.root._telaTurma.montarTelaAt(self)
                 text: 'Cadastrar'
+                #background_color: 1, .69, .15, .8
+                background_normal: 'buttonpress.png'
+                background_down: 'button.png'
 
             Button:
                 on_release: app.root.telaListarTurmas()
                 text: 'Listar Turmas'
+                #background_color: 1, .69, .15, .8
+                background_normal: 'buttonpress.png'
+                background_down: 'button.png'
             Label:
                 canvas.before:
                     Color:
@@ -53,10 +59,16 @@
             Button:
                 on_release: app.root._telaAluno.montarTelaAt(self)
                 text: 'Cadastrar'
+                #background_color: 1, .69, .15, 1
+                background_normal: 'buttonpress.png'
+                background_down: 'button.png'
 
             Button:
                 on_release: app.root.telaListarAlunos()
                 text: 'Listar Alunos'
+                #background_color: 1, .69, .15, 1
+                background_normal: 'buttonpress.png'
+                background_down: 'button.png'
 
 #termino da telaInicial
 
@@ -69,14 +81,20 @@
 		#anchor_y: 'top'
 		pos_hint: {'center_x': 0.5, 'center_y': 0.55}
 		size_hint: [1, 0.90]
-
+		canvas:
+			Color:
+				rgba: .30, .25, .1, 1
+			Rectangle:
+				pos: self.pos
+				size: self.size
+				source: 'logo.png'
 		BoxLayout:
 			id: interno1
 			orientation: 'vertical'
 			size_hint: [0.7, 1]
 			canvas:
 				Color:
-					rgba: .30, .25, .1, 1
+					rgba: .30, .25, .1, .6
 				Rectangle:
 					pos: self.pos
 					size: self.size
@@ -117,7 +135,7 @@
 				row_default_height: '30dp'
 				canvas:
 				    Color:
-				        rgba: .10, .25, .1, 1
+				        rgba: .10, .25, .1, .6
 				    Rectangle:
 				        pos: self.pos
 				        size: self.size
@@ -179,10 +197,12 @@
 		    id: btCadAtual
 		    on_release: app.root.cadastrarAtualizar()
 		    text: 'Cadastrar'
+		    background_color: 1, .69, .15, .8
 
 		Button:
 		    on_release: app.root.telaInicial()
 	        text: 'Tela Inicial'
+	        background_color: 1, .69, .15, .8
 
 <ListarTurmas>:
     name: 'ListarTurmas'
@@ -196,12 +216,11 @@
 
     BoxLayout:
         orientation: 'vertical'
-        canvas:
-            Color:
-                rgba: .30, .25, .1, 1
-            Rectangle:
-                pos: self.pos
-                size: self.size
+		canvas:
+			Rectangle:
+			    source: 'logo.png'
+			    pos: root.pos
+			    size: self.size
         Label:
             text: 'Pesquisar Turmas:'
             font_size: '18sp'
@@ -232,7 +251,7 @@
             height: '400dp'
             canvas:
                 Color:
-                    rgba: .80, .69, .58, .6
+                    rgba: .80, .69, .58, .8
                 Rectangle:
                     pos: self.pos
                     size: self.size
@@ -242,7 +261,13 @@
                 size_hint_y: None
                 height: '30dp'
                 size_hint_x: .2
-                color: [0,0,0,1]
+                color: [0,0,0,.7]
+                canvas.before:
+                    Color:
+                        rgba: [1,1,1,.7]
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
 
             Label:
                 id: colNome
@@ -251,6 +276,12 @@
                 height: '30dp'
                 size_hint_x: .6
                 color: [0,0,0,1]
+                canvas.before:
+                    Color:
+                        rgba: [1,1,1,.7]
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
 
             Label:
                 id: colTurno
@@ -259,6 +290,12 @@
                 height: '30dp'
                 size_hint_x: .2
                 color: [0,0,0,1]
+                canvas.before:
+                    Color:
+                        rgba: [1,1,1,.7]
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
             Label:
                 id: lblAtual
                 text: 'Atualizar'
@@ -266,6 +303,12 @@
                 height: '30dp'
                 size_hint_x: .1
                 color: [0,0,0,1]
+                canvas.before:
+                    Color:
+                        rgba: [1,1,1,.7]
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
             Label:
                 id: lblExcluir
                 text: 'Excluir'
@@ -273,6 +316,12 @@
                 height: '30dp'
                 size_hint_x: .1
                 color: [0,0,0,1]
+                canvas.before:
+                    Color:
+                        rgba: [1,1,1,.7]
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
 
 
         AnchorLayout:
